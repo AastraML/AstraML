@@ -1,8 +1,20 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { ChartCard } from '../components/charts/ChartCard';
+import { LineChart } from '../components/charts/LineChart';
+import { useMemo } from 'react';
 
 export default function Dashboard() {
+  const mockPerformanceData = useMemo(() => [
+    { epoch: '1', accuracy: 0.65, val_accuracy: 0.60 },
+    { epoch: '2', accuracy: 0.72, val_accuracy: 0.68 },
+    { epoch: '3', accuracy: 0.81, val_accuracy: 0.76 },
+    { epoch: '4', accuracy: 0.86, val_accuracy: 0.82 },
+    { epoch: '5', accuracy: 0.91, val_accuracy: 0.84 },
+    { epoch: '6', accuracy: 0.94, val_accuracy: 0.87 },
+    { epoch: '7', accuracy: 0.96, val_accuracy: 0.89 },
+  ], []);
+
   return (
     <div className="space-y-6">
       <div>
@@ -52,17 +64,20 @@ export default function Dashboard() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-        <Card className="col-span-4">
-          <CardHeader>
-            <CardTitle>Overview</CardTitle>
-            <CardDescription>Model performance across experiments</CardDescription>
-          </CardHeader>
-          <CardContent className="pl-2">
-            <div className="flex h-[200px] items-center justify-center text-sm text-muted-foreground">
-              Charts will be implemented in the charts feature branch
-            </div>
-          </CardContent>
-        </Card>
+        <ChartCard 
+          title="Overview" 
+          description="Model performance across experiments" 
+          className="col-span-4"
+        >
+          <LineChart
+            data={mockPerformanceData}
+            xAxisKey="epoch"
+            lines={[
+              { key: 'accuracy', name: 'Accuracy' },
+              { key: 'val_accuracy', name: 'Validation Accuracy', color: 'hsl(var(--destructive))' },
+            ]}
+          />
+        </ChartCard>
         <Card className="col-span-3">
           <CardHeader>
             <CardTitle>Recent Activity</CardTitle>
