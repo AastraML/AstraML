@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import { AppShell } from '../components/layout/AppShell';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
+const Upload = lazy(() => import('../pages/Upload'));
 const PlaceholderPage = lazy(() => Promise.resolve({ 
   default: () => <div className="flex h-full items-center justify-center text-muted-foreground">Page Under Construction</div> 
 }));
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'upload',
-        element: <Suspense fallback={<div>Loading...</div>}><PlaceholderPage /></Suspense>,
+        element: <Suspense fallback={<div>Loading...</div>}><Upload /></Suspense>,
       },
       {
         path: 'train',
