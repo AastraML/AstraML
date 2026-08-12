@@ -1,7 +1,6 @@
-import React, { useCallback, useState } from 'react';
-import { UploadCloud, FileType, AlertCircle } from 'lucide-react';
+import { useState } from 'react';
+import { UploadCloud, AlertCircle } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { Button } from '../ui/Button';
 import { Spinner } from '../ui/Spinner';
 
 interface DropzoneProps {
