@@ -6,6 +6,7 @@ const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Upload = lazy(() => import('../pages/Upload'));
 const Explain = lazy(() => import('../pages/Explain'));
 const PromptEngineering = lazy(() => import('../pages/PromptEngineering'));
+const Settings = lazy(() => import('../pages/Settings'));
 const PlaceholderPage = lazy(() => Promise.resolve({ 
   default: () => <div className="flex h-full items-center justify-center text-muted-foreground">Page Under Construction</div> 
 }));
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: 'experiments',
         element: <Suspense fallback={<div>Loading...</div>}><PlaceholderPage /></Suspense>,
+      },
+      {
+        path: 'settings',
+        element: <Suspense fallback={<div>Loading...</div>}><Settings /></Suspense>,
       },
     ],
   },
