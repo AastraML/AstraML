@@ -22,7 +22,7 @@ const navItems = [
   { name: 'Upload Data', href: '/upload', icon: Upload },
   { name: 'Train Model', href: '/train', icon: BrainCircuit },
   { name: 'Explainability', href: '/explain', icon: BarChart3 },
-  { name: 'AI Chat', href: '/chat', icon: MessageSquare },
+  { name: 'Prompt Config', href: '/chat', icon: MessageSquare },
   { name: 'Experiments', href: '/experiments', icon: FlaskConical },
 ];
 

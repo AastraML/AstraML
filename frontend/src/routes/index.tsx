@@ -5,6 +5,7 @@ import { AppShell } from '../components/layout/AppShell';
 const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Upload = lazy(() => import('../pages/Upload'));
 const Explain = lazy(() => import('../pages/Explain'));
+const PromptEngineering = lazy(() => import('../pages/PromptEngineering'));
 const PlaceholderPage = lazy(() => Promise.resolve({ 
   default: () => <div className="flex h-full items-center justify-center text-muted-foreground">Page Under Construction</div> 
 }));
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'chat',
-        element: <Suspense fallback={<div>Loading...</div>}><PlaceholderPage /></Suspense>,
+        element: <Suspense fallback={<div>Loading...</div>}><PromptEngineering /></Suspense>,
       },
       {
         path: 'experiments',
