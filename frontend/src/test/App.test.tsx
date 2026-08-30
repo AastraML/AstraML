@@ -3,8 +3,8 @@ import { describe, it, expect } from 'vitest';
 import App from '../App';
 
 describe('App', () => {
-  it('renders the Dashboard lazily via routing', async () => {
+  it('renders the Landing lazily via routing', async () => {
     render(<App />);
-    expect(await screen.findByText('Dashboard')).toBeInTheDocument();
+    expect(await screen.findByText(/Machine Learning,/i)).toBeInTheDocument();
   });
 });

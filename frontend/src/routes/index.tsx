@@ -1,7 +1,12 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import { AppShell } from '../components/layout/AppShell';
+import { PublicLayout } from '../components/layout/PublicLayout';
+import { AuthLayout } from '../components/layout/AuthLayout';
 
+const Landing = lazy(() => import('../pages/Landing'));
+const SignIn = lazy(() => import('../pages/SignIn'));
+const SignUp = lazy(() => import('../pages/SignUp'));
 const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Upload = lazy(() => import('../pages/Upload'));
 const Explain = lazy(() => import('../pages/Explain'));
@@ -14,9 +19,22 @@ const PlaceholderPage = lazy(() => Promise.resolve({
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <PublicLayout />,
+    children: [
+      { index: true, element: <Suspense fallback={<div>Loading...</div>}><Landing /></Suspense> },
+    ],
+  },
+  {
+    element: <AuthLayout />,
+    children: [
+      { path: 'signin', element: <Suspense fallback={<div>Loading...</div>}><SignIn /></Suspense> },
+      { path: 'signup', element: <Suspense fallback={<div>Loading...</div>}><SignUp /></Suspense> },
+    ],
+  },
+  {
+    path: '/',
     element: <AppShell />,
     children: [
-      { index: true, element: <Navigate to="/dashboard" replace /> },
       {
         path: 'dashboard',
         element: (
@@ -51,6 +69,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: '*', element: <Navigate to="/" replace /> },
 ]);
 
 export function AppRoutes() {
