@@ -1,19 +1,8 @@
-import { useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { BrainCircuit } from 'lucide-react';
 import { AetherRibbonMesh } from '../ui/AetherRibbonMesh';
-import { useAppStore } from '../../store';
 
 export function AuthLayout() {
-  const { theme } = useAppStore();
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center p-4">

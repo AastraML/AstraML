@@ -1,24 +1,8 @@
-import { useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { useAppStore } from '../../store';
 import { Button } from '../ui/Button';
-import { Moon, Sun, BrainCircuit } from 'lucide-react';
+import { BrainCircuit } from 'lucide-react';
 
 export function PublicLayout() {
-  const { theme, setTheme } = useAppStore();
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
@@ -29,10 +13,6 @@ export function PublicLayout() {
             <span>AstraML</span>
           </div>
           <nav className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" onClick={toggleTheme}>
-              {theme === 'light' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
             <Link to="/signin">
               <Button variant="ghost">Sign In</Button>
             </Link>

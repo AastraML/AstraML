@@ -1,16 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
-import { useAppStore } from '../store';
 import { Button } from '../components/ui/Button';
-import { Moon, Sun } from 'lucide-react';
 import { AetherRibbonMesh } from '../components/ui/AetherRibbonMesh';
 
 export default function Settings() {
-  const { theme, setTheme } = useAppStore();
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-  };
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 relative">
@@ -25,26 +17,20 @@ export default function Settings() {
       <div className="grid gap-6 relative z-10">
         <Card className="shadow-2xl border-muted/50 bg-background/60 backdrop-blur-md">
           <CardHeader>
-            <CardTitle>Appearance</CardTitle>
+            <CardTitle>Account</CardTitle>
             <CardDescription>
-              Customize the look and feel of the application.
+              Manage your profile and account settings.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Theme</p>
+                <p className="text-sm font-medium leading-none">Email Address</p>
                 <p className="text-sm text-muted-foreground">
-                  Switch between light and dark mode.
+                  Update your primary email address.
                 </p>
               </div>
-              <Button variant="outline" size="icon" onClick={toggleTheme}>
-                {theme === 'light' ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </Button>
+              <Button variant="outline">Update</Button>
             </div>
           </CardContent>
         </Card>

@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { useAppStore } from '../../store';
 
 class Particle {
     x: number;
@@ -45,8 +44,6 @@ class Particle {
 
 export function AetherRibbonMesh() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const { theme } = useAppStore();
-    const isDarkMode = theme === 'dark';
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -96,8 +93,8 @@ export function AetherRibbonMesh() {
             clickRipple.y = clientY;
             clickRipple.radius = 0;
 
-            // Dark mode gets slate blue particles; Light mode gets cyan
-            const pColor = isDarkMode ? 'rgba(37, 99, 235, 0.85)' : 'rgba(56, 189, 248, 0.85)';
+            // Always dark mode (slate blue particles)
+            const pColor = 'rgba(37, 99, 235, 0.85)';
             for (let i = 0; i < 30; i++) {
                 particles.push(new Particle(clickRipple.x, clickRipple.y, pColor));
             }
@@ -127,11 +124,8 @@ export function AetherRibbonMesh() {
             mouse.x += (mouse.targetX - mouse.x) * lerpFactor;
             mouse.y += (mouse.targetY - mouse.y) * lerpFactor;
 
-            // Inverted theme layout
-            // Dark mode -> Light & White layout | Light mode -> Black layout
-            // (Note from component spec: Dark mode actually means 'bg-white' in original code, 
-            // but let's align it with our app's Tailwind background colors)
-            const bgColor = isDarkMode ? '#020617' : '#ffffff';
+            // Always dark layout
+            const bgColor = '#020617';
 
             ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, width, height);
@@ -154,26 +148,19 @@ export function AetherRibbonMesh() {
             ];
 
             layers.forEach((layer) => {
-                const blendMode = layer.primary ? 'source-over' : (isDarkMode ? 'screen' : 'multiply');
+                const blendMode = layer.primary ? 'source-over' : 'screen';
                 ctx.globalCompositeOperation = blendMode;
 
                 const gradient = ctx.createLinearGradient(0, 0, width, 0);
-                if (!isDarkMode) {
-                    // Light Mode: Vibrant cyan to light blue gradient on white
-                    gradient.addColorStop(0, `rgba(56, 189, 248, ${layer.primary ? 0.1 : 0.02})`);
-                    gradient.addColorStop(0.5, `rgba(96, 165, 250, ${layer.primary ? 0.8 : 0.35})`);
-                    gradient.addColorStop(1, `rgba(168, 85, 247, ${layer.primary ? 0.1 : 0.02})`);
-                } else {
-                    // Dark Mode: Soft slate blue to deep blue-indigo gradient on dark
-                    gradient.addColorStop(0, `rgba(37, 99, 235, ${layer.primary ? 0.15 : 0.03})`);
-                    gradient.addColorStop(0.5, `rgba(29, 78, 216, ${layer.primary ? 0.75 : 0.3})`);
-                    gradient.addColorStop(1, `rgba(109, 40, 217, ${layer.primary ? 0.15 : 0.03})`);
-                }
+                // Dark Mode: Soft slate blue to deep blue-indigo gradient on dark
+                gradient.addColorStop(0, `rgba(37, 99, 235, ${layer.primary ? 0.15 : 0.03})`);
+                gradient.addColorStop(0.5, `rgba(29, 78, 216, ${layer.primary ? 0.75 : 0.3})`);
+                gradient.addColorStop(1, `rgba(109, 40, 217, ${layer.primary ? 0.15 : 0.03})`);
 
                 for (let r = 0; r < layer.ribbonCount; r++) {
                     const ribbonProgress = r / layer.ribbonCount;
                     const yOffset = height * 0.22 + r * (height * 0.032) + layer.offsetMod * 35;
-                    const baseAlpha = (1 - ribbonProgress * 0.75) * (!isDarkMode ? 0.8 : 0.65);
+                    const baseAlpha = (1 - ribbonProgress * 0.75) * 0.65;
 
                     const rippleDistort =
                         clickRipple.radius < clickRipple.maxRadius
@@ -222,7 +209,7 @@ export function AetherRibbonMesh() {
 
                         // Small accent node markings
                         if (layer.primary && x % 48 === 0) {
-                            ctx.fillStyle = !isDarkMode ? 'rgba(29, 78, 216, 0.25)' : 'rgba(168, 85, 247, 0.3)';
+                            ctx.fillStyle = 'rgba(168, 85, 247, 0.3)';
                             ctx.fillRect(x - 1, y - 1, 2, 2);
                         }
                     }
@@ -251,7 +238,7 @@ export function AetherRibbonMesh() {
             window.removeEventListener('mousedown', handlePointerDown);
             window.removeEventListener('touchstart', handlePointerDown);
         };
-    }, [isDarkMode]);
+    }, []);
 
     return (
         <div className="fixed inset-0 w-full h-full overflow-hidden select-none z-0 pointer-events-none">
