@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
+import { AetherRibbonMesh } from '../components/ui/AetherRibbonMesh';
 
 export default function Landing() {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center py-20 lg:py-32 px-4 sm:px-6 lg:px-8 text-center">
-      <div className="max-w-4xl space-y-8">
+    <div className="relative flex-1 flex flex-col items-center justify-center py-20 lg:py-32 px-4 sm:px-6 lg:px-8 text-center min-h-screen">
+      <AetherRibbonMesh />
+      <div className="max-w-4xl space-y-8 relative z-10 bg-background/50 backdrop-blur-sm p-8 rounded-2xl border">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
           Machine Learning, <br className="hidden sm:block" />
           <span className="text-primary">simplified.</span>
@@ -26,16 +28,16 @@ export default function Landing() {
         </div>
       </div>
       
-      <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full text-left">
-        <div className="p-6 rounded-xl border bg-card text-card-foreground shadow">
+      <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full text-left relative z-10">
+        <div className="p-6 rounded-xl border bg-card/80 backdrop-blur-sm text-card-foreground shadow">
           <h3 className="font-semibold text-xl mb-2">Data Profiling</h3>
           <p className="text-muted-foreground">Automatically detect data leakage and profile your datasets for immediate insights before training.</p>
         </div>
-        <div className="p-6 rounded-xl border bg-card text-card-foreground shadow">
+        <div className="p-6 rounded-xl border bg-card/80 backdrop-blur-sm text-card-foreground shadow">
           <h3 className="font-semibold text-xl mb-2">Automated Training</h3>
           <p className="text-muted-foreground">Train optimized models instantly. We handle the hyperparameter tuning and model selection.</p>
         </div>
-        <div className="p-6 rounded-xl border bg-card text-card-foreground shadow">
+        <div className="p-6 rounded-xl border bg-card/80 backdrop-blur-sm text-card-foreground shadow">
           <h3 className="font-semibold text-xl mb-2">AI Explainability</h3>
           <p className="text-muted-foreground">Generate comprehensive markdown reports and SHAP visualizations to explain your model's decisions.</p>
         </div>
