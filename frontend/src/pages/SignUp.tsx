@@ -19,7 +19,7 @@ export default function SignUp() {
   };
 
   return (
-    <Card className="shadow-lg border-muted">
+    <Card className="shadow-2xl border-muted/50 bg-background/60 backdrop-blur-md">
       <CardHeader className="space-y-1 text-center">
         <CardTitle className="text-2xl">Create an account</CardTitle>
         <CardDescription>
