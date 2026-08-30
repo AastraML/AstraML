@@ -1,12 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
-import { AetherRibbonMesh } from '../components/ui/AetherRibbonMesh';
 
 export default function Settings() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 relative">
-      <AetherRibbonMesh />
       <div className="relative z-10">
         <h2 className="text-3xl font-bold tracking-tight drop-shadow-md">Settings</h2>
         <p className="text-muted-foreground drop-shadow-md">

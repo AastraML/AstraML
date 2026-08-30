@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/Button';
-import { AetherRibbonMesh } from '../components/ui/AetherRibbonMesh';
 
 export default function Landing() {
   return (
     <div className="relative flex-1 flex flex-col items-center justify-center py-20 lg:py-32 px-4 sm:px-6 lg:px-8 text-center min-h-screen">
-      <AetherRibbonMesh />
       <div className="max-w-4xl space-y-8 relative z-10 drop-shadow-md">
         <h1 className="font-mono text-5xl font-black tracking-tighter uppercase sm:text-7xl md:text-8xl lg:text-9xl">
           Machine Learning, <br className="hidden sm:block" />
