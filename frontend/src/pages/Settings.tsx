@@ -13,7 +13,7 @@ export default function Settings() {
       </div>
       
       <div className="grid gap-6 relative z-10">
-        <Card className="shadow-2xl border-muted/50 bg-background/60 backdrop-blur-md">
+        <Card>
           <CardHeader>
             <CardTitle>Account</CardTitle>
             <CardDescription>

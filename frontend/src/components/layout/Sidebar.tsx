@@ -40,7 +40,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-50 w-64 -translate-x-full border-r bg-card transition-transform duration-300 ease-in-out md:translate-x-0',
+          'fixed inset-y-0 left-0 z-50 w-64 -translate-x-full border-r border-r-muted/50 bg-background/60 backdrop-blur-md transition-transform duration-300 ease-in-out md:translate-x-0',
           isOpen && 'translate-x-0'
         )}
       >

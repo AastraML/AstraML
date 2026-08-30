@@ -19,7 +19,7 @@ export default function SignIn() {
   };
 
   return (
-    <Card className="shadow-2xl border-muted/50 bg-background/60 backdrop-blur-md">
+    <Card>
       <CardHeader className="space-y-1 text-center">
         <CardTitle className="text-2xl">Sign in to your account</CardTitle>
         <CardDescription>
