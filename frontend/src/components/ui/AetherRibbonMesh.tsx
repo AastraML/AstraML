@@ -154,7 +154,8 @@ export function AetherRibbonMesh() {
             ];
 
             layers.forEach((layer) => {
-                ctx.globalCompositeOperation = layer.primary ? 'source-over' : 'multiply';
+                const blendMode = layer.primary ? 'source-over' : (isDarkMode ? 'screen' : 'multiply');
+                ctx.globalCompositeOperation = blendMode;
 
                 const gradient = ctx.createLinearGradient(0, 0, width, 0);
                 if (!isDarkMode) {

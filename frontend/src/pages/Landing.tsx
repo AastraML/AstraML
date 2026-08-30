@@ -6,12 +6,12 @@ export default function Landing() {
   return (
     <div className="relative flex-1 flex flex-col items-center justify-center py-20 lg:py-32 px-4 sm:px-6 lg:px-8 text-center min-h-screen">
       <AetherRibbonMesh />
-      <div className="max-w-4xl space-y-8 relative z-10">
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+      <div className="max-w-4xl space-y-8 relative z-10 drop-shadow-md">
+        <h1 className="font-mono text-5xl font-black tracking-tighter uppercase sm:text-7xl md:text-8xl lg:text-9xl">
           Machine Learning, <br className="hidden sm:block" />
           <span className="text-primary">simplified.</span>
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
+        <p className="mx-auto max-w-2xl text-lg font-mono text-muted-foreground sm:text-xl">
           AstraML is the all-in-one platform to train, evaluate, and explain your machine learning models without writing complex infrastructure code.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -28,7 +28,7 @@ export default function Landing() {
         </div>
       </div>
       
-      <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full text-left relative z-10">
+      <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full text-left relative z-10 drop-shadow-md">
         <div className="p-6">
           <h3 className="font-semibold text-xl mb-2">Data Profiling</h3>
           <p className="text-muted-foreground">Automatically detect data leakage and profile your datasets for immediate insights before training.</p>

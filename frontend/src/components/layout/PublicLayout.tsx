@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useAppStore } from '../../store';
 import { Button } from '../ui/Button';
@@ -5,10 +6,18 @@ import { Moon, Sun, BrainCircuit } from 'lucide-react';
 
 export function PublicLayout() {
   const { theme, setTheme } = useAppStore();
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    document.documentElement.classList.toggle('dark');
   };
 
   return (
