@@ -253,7 +253,7 @@ export function AetherRibbonMesh() {
     }, [isDarkMode]);
 
     return (
-        <div className="absolute inset-0 w-full h-full overflow-hidden select-none z-0 pointer-events-none">
+        <div className="fixed inset-0 w-full h-full overflow-hidden select-none z-0 pointer-events-none">
             <canvas ref={canvasRef} className="block w-full h-full cursor-default" />
         </div>
     );
